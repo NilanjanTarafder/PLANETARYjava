@@ -1,0 +1,55 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class PlanetaryData {
+    int moons,rings;
+    String planet,gas;
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String planet[]={"Mercury","Venus","Earth","Jupiter","Saturn","Uranus"};
+        int moons[]={0,0,1,79,83,27};
+        int rings[]={0,0,0,1,1,1};  // 0 =false 1=true
+        String gas[]={"carbondioxide","nitrogen","nitrogen","oxygen","hydrogen","helium","hydrogen","helium","hydrogen","helium","methane"};
+        int count=countmoons(moons,rings);
+        System.out.println("\n count of moons of all planets having rings "+count);
+        String gasc=gascount(gas);
+        System.out.println("\n gas that is found on maximum planets "+gasc);
+
+        
+        
+    }
+    
+    public static int countmoons(int moons[],int rings[])
+    {
+     int sum=0;
+     for(int i=0;i<6;i++)
+     {
+         if (rings[i]==1)
+         sum=sum+moons[i];
+     }
+        return sum;
+    }
+    
+    public static String gascount(String gas[])
+    {
+    int maxcount = 0;
+    String element_having_max_freq="";
+    for (int i = 0; i < gas.length; i++) {
+      int count = 0;
+      for (int j = 0; j < gas.length; j++) {
+        if (gas[i] == gas[j]) {
+          count++;
+        }
+      }
+ 
+      if (count > maxcount) {
+        maxcount = count;
+        element_having_max_freq = gas[i];
+      }
+    }
+ 
+    return element_having_max_freq;
+    }
+    
+    
+}
